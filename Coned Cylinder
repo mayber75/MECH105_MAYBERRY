@@ -1,0 +1,23 @@
+h = 20;
+r_cylinder = 12.5;
+h_cylinder = 19;
+v_cylinder = pi * (r_cylinder.^2) * h_cylinder;
+R_cone = (2 * ((10.5 * (h - 19)) / 14) + 25) / 2
+r_cone = 12.5;
+h_cone = h-19;
+v_cone = (pi * h_cone / 3) * ((R_cone.^2) + R_cone * r_cone + (r_cone.^2));
+v = v_cone + v_cylinder;
+
+if h == 19
+    v = v_cylinder
+elseif h < 19
+    v = pi * (r_cylinder.^2) * h
+elseif h > 19
+    v = v_cylinder + v_cone
+elseif h > 33
+    fprintf('ERROR')
+end
+    
+    
+
+    
