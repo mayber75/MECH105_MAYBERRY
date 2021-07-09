@@ -1,0 +1,28 @@
+function NewtonRaphsonMethod
+%Implmentaton of Newton-Raphson method to determine a solution.
+%to approximate solution to x = cos(x), we let f(x) = x - cos(x)
+
+i = 1;
+p0 = 0.3;            %initial conditions
+N = 100;                %maximum number of iterations
+error = 0.0001;         %precision required
+
+syms 'x'
+f(x) = 7*sin(x)*exp(-x)-1;      %function we are solving
+df = diff(f);           %differential of f(x)
+
+while i <= N
+    p = p0 - (f(p0)/df(p0));          %Newton-Raphson method 
+    
+    if (abs(p - p0)/abs(p)) < error                     %stopping criterion when difference between iterations is below tolerance
+        fprintf('Solution is %f \n', double(p))
+        return
+    end
+ 
+    i = i + 1;
+    p0 = p;             %update p0
+end
+
+fprintf('Solution did not coverge within %d iterations at a required precision of %d \n', N, error)     %error for non-convergence within N iterations
+
+end
