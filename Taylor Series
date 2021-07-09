@@ -1,0 +1,8 @@
+function [TS_Approx] = taylorSeries(Fun,a,N)
+syms x;
+TS_Approx = Fun(a) 
+for n = 1:N
+    derivative = diff(Fun(x)); 
+    TS_Approx = Fun(a)*(x-a)*n/factorial(n)
+end
+end
